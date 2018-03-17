@@ -31,7 +31,14 @@ function initialize() {
     document.getElementById("target").innerHTML = (targetNumber);
     document.getElementById("counter").innerHTML = (counter);
     
-    
+    for (i = 0; i < 4; i++) {
+        imageCrystal = $("<img>");
+        imageCrystal.addClass("crystal-image");
+        //imageCrystal.attr("src", "assets/images/" + imagePath[i] + "");
+     //   imageCrystal.attr("src", "assets/images/crystalball.jpg");
+        imageCrystal.attr("data-crystalValue", cryCount[i]);
+        $(".crystals").append(imageCrystal);
+    };
 }
 $(".crystal-image").click(function () {
     var crystalValue = ($(this).attr("data-crystalvalue"));
