@@ -35,7 +35,7 @@ $(".crystal-image").click(function () {
     
     if (targetNumber == counter) {
         win++;
-        $("#wincount").html ("WIN : " + win);
+        $("#wincount").html("WIN : " + win);
         initialize(false);
     }
     else if (targetNumber < counter) {
