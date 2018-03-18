@@ -1,45 +1,31 @@
 var win = 0;
 var lose = 0;
 
-var randomArray = [];
-var counter = 0;
-var targetNumber = Math.floor(Math.random() * 120) + 19;
-
-
-document.getElementById("target").innerHTML = (targetNumber);
-document.getElementById("counter").innerHTML = (counter);
-//var imagePath = [pathOne,pathTwo,pathThree,pathFour];
-randomArray = function () {
-    return Math.floor(Math.random() * 12) + 1;
-}
-var cryCount = Array(4).fill(0).map(randomArray);
-console.log(cryCount);
-
-for (i = 0; i < 4; i++) {
-    var imageCrystal = $("<img>");
-    imageCrystal.addClass("crystal-image");
-    //imageCrystal.attr("src", "assets/images/" + imagePath[i] + "");
-    imageCrystal.attr("src", "assets/images/crystalball.jpg");
-    imageCrystal.attr("data-crystalValue", cryCount[i]);
-    $(".crystals").append(imageCrystal);
-
-};
-
-function initialize() {
+function initialize(called) {
     counter = 0;
     targetNumber = Math.floor(Math.random() * 120) + 19;
-    document.getElementById("target").innerHTML = (targetNumber);
-    document.getElementById("counter").innerHTML = (counter);
+    $("#target").html(targetNumber);
+   $("#counter").html(counter);
+    randomArray = function () {
+        return Math.floor(Math.random() * 12) + 1;
+    }
+    var cryCount = Array(4).fill(0).map(randomArray);
+    //console.log(cryCount);
     
     for (i = 0; i < 4; i++) {
-        imageCrystal = $("<img>");
-        imageCrystal.addClass("crystal-image");
-        //imageCrystal.attr("src", "assets/images/" + imagePath[i] + "");
-     //   imageCrystal.attr("src", "assets/images/crystalball.jpg");
-        imageCrystal.attr("data-crystalValue", cryCount[i]);
-        $(".crystals").append(imageCrystal);
+        if (called) {
+            imageCrystal = $("<img>");
+            imageCrystal.addClass("crystal-image");
+            //imageCrystal.attr("src", "assets/images/" + imagePath[i] + "");
+            imageCrystal.attr("src", "assets/images/crystalball.jpg");
+            //imageCrystal.attr("data-crystalValue", cryCount[i]);
+            imageCrystal.attr("id", i) 
+            $(".crystals").append(imageCrystal);
+        }
+        $("#" + i).attr("data-crystalValue", cryCount[i]);
     };
 }
+initialize(true)
 $(".crystal-image").click(function () {
     var crystalValue = ($(this).attr("data-crystalvalue"));
     crystalValue = parseInt(crystalValue);
@@ -49,15 +35,15 @@ $(".crystal-image").click(function () {
     
     if (targetNumber == counter) {
         win++;
-        document.getElementById("wincount").innerHTML = "WIN : " + win;
-        initialize();
+        $("#wincount").html ("WIN : " + win);
+        initialize(false);
     }
     else if (targetNumber < counter) {
         lose++;
-        document.getElementById("losecount").innerHTML="Lose! " + lose;
-        initialize();
+        $("#losecount").html("Lose! " + lose);
+        initialize(false);
     }
-    console.log(counter);
+    //console.log(counter);
 
 })
 
