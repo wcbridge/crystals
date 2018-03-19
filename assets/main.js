@@ -5,7 +5,7 @@ function initialize(called) {
     counter = 0;
     targetNumber = Math.floor(Math.random() * 120) + 19;
     $("#target").html(targetNumber);
-   $("#counter").html(counter);
+   $("#counter").html("Counter : " +counter);
     randomArray = function () {
         return Math.floor(Math.random() * 12) + 1;
     }
@@ -30,7 +30,7 @@ $(".crystal-image").click(function () {
     var crystalValue = ($(this).attr("data-crystalvalue"));
     crystalValue = parseInt(crystalValue);
     counter += crystalValue;
-    $("#counter").html(counter);
+    $("#counter").html("Counter : "+counter);
    
     
     if (targetNumber == counter) {

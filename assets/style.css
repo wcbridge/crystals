@@ -1,4 +1,27 @@
+#counter {
+    margin-left: 10%;
+}
+
 .crystal-image {
     height: 150px;
     width: auto;
+    margin: 5px;
 }
+
+.card {
+    margin: 10px 3px; 
+    background: #e6ffff;
+    
+    
+}
+#wincount {
+    margin: 2%;
+    font-size: 150%
+
+}
+
+#losecount {
+    margin: 2%;
+    font-size: 150%
+}
+
